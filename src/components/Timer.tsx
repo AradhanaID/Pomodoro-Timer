@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { TimerContext, TimerContextType } from "../context/TimerContext";
 
 const Timer = () => {
@@ -6,12 +6,11 @@ const Timer = () => {
 	if (!timerProvider) return null;
 	const { timer } = timerProvider;
 
-	const [minute, setMinute] = useState();
-	const [second, setSecond] = useState();
-
+	const minutes = useMemo(() => Math.floor(timer / 60), [timer])
+	const seconds = useMemo(() => timer % 60, [timer])
 	return (
 		<p className="text-6xl my-6">
-			{String(timer).padStart(2, "0")}:{String("0").padStart(2, "0")}
+			{String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
 		</p>
 	);
 };
