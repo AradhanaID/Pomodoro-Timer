@@ -5,12 +5,20 @@ const StartButton = () => {
 	const timer = useContext(TimerContext);
 	if (!timer) return null
 
-	const { play } = timer;
+	const { isPlaying, play, pause } = timer;
 
 	return (
-		<p className="w-full text-center bg-red-800 cursor-pointer py-2 px-6 rounded inline-block" onClick={play}>
-			Start
-		</p>
+		<>
+			{isPlaying ?
+				<p className="w-full text-center bg-red-800 cursor-pointer py-2 px-6 rounded inline-block" onClick={pause}>
+					Pause
+				</p>
+				:
+				<p className="w-full text-center bg-red-800 cursor-pointer py-2 px-6 rounded inline-block" onClick={play}>
+					Play
+				</p>
+			}
+		</>
 	);
 };
 

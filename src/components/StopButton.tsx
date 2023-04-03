@@ -8,8 +8,8 @@ const StopButton = () => {
 	const { stop } = timer;
 
 	return (
-		<p className="w-full text-center border border-1 border-red-800 cursor-pointer py-2 px-6 rounded inline-block" onClick={stop}>
-			Stop
+		<p className="w-full text-center text-red-800 cursor-pointer py-2 px-6" onClick={stop}>
+			Reset
 		</p>
 	);
 };

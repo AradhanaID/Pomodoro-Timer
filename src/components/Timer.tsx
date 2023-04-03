@@ -8,6 +8,7 @@ const Timer = () => {
 
 	const minutes = useMemo(() => Math.floor(timer / 60), [timer])
 	const seconds = useMemo(() => timer % 60, [timer])
+	
 	return (
 		<p className="text-6xl my-6">
 			{String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
