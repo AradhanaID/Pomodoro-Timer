@@ -13,16 +13,16 @@ const Timer = () => {
   const secondsStyles: Record<string, string> = { '--value': String(seconds).padStart(2, "0") }
 
   return (
-    <p className="text-8xl my-6">
-      <span className="countdown">
+    <div className="flex items-center text-8xl my-6 font-semibold">
+      <span className="countdown text-right">
         <span style={minutesStyles}></span>
       </span>
-      <span>:</span>
-      <span className="countdown">
+      <span className="border h-24 mx-4">
+      </span>
+      <span className="countdown text-left">
         <span style={secondsStyles}></span>
       </span>
-      {/* {String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")} */}
-    </p>
+    </div>
   );
 };
 
