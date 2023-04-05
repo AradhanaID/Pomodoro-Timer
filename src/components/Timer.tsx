@@ -1,5 +1,5 @@
-import { useContext, useEffect, useMemo, useState } from "react";
-import { TimerContext, TimerContextType } from "../context/TimerContext";
+import { useContext, useMemo } from "react";
+import { TimerContext } from "../context/TimerContext";
 
 const Timer = () => {
 	const timerProvider = useContext(TimerContext);
@@ -10,7 +10,7 @@ const Timer = () => {
 	const seconds = useMemo(() => timer % 60, [timer])
 	
 	return (
-		<p className="text-6xl my-6">
+		<p className="text-8xl my-6">
 			{String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}
 		</p>
 	);
