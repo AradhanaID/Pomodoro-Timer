@@ -1,13 +1,10 @@
 import { useContext } from 'react';
-import { TimerContext } from '../context/TimerContext';
 import { ArrowRepeat } from "react-bootstrap-icons"
+import { TimerContext } from '../../context/TimerContext';
 const ResetButton = () => {
 
-  const timer = useContext(TimerContext);
-  if (!timer) return null
-
-  const { stop } = timer;
-
+  const { stop } = useContext(TimerContext)!;
+  
   return (
     <div className='cursor-pointer' onClick={stop}>
       <ArrowRepeat width={32} height={32} />

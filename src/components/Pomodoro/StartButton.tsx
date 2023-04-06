@@ -1,12 +1,8 @@
 import { useContext } from 'react';
-import { TimerContext } from '../context/TimerContext';
 import { PlayFill, PauseFill } from 'react-bootstrap-icons'
+import { TimerContext } from '../../context/TimerContext';
 const StartButton = () => {
-
-  const timer = useContext(TimerContext);
-  if (!timer) return null
-
-  const { isPlaying, play, pause, timerState } = timer;
+  const { isPlaying, play, pause, timerState } = useContext(TimerContext)!;
 
   return (
     <>

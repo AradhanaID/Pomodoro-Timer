@@ -1,20 +1,14 @@
 import {useContext } from "react";
-import StartButton from "./components/StartButton";
-import ResetButton from "./components/ResetButton";
-
-import Timer from "./components/Timer";
 import { TimerContext } from "./context/TimerContext";
-import NextButton from "./components/NextButton";
-import PomodoroStatus from "./components/PomodoroStatus";
+import { NextButton, PomodoroStatus, ResetButton, StartButton, Timer } from "./components/Pomodoro";
+import { MenuSelector } from "./components";
+import Alert from "./components/Alert";
 
 function App() {
-  const timer = useContext(TimerContext);
-  if (!timer) return null
-
-  const { timerState } = timer;
+  const { timerState } = useContext(TimerContext)!;
   return (
     <div className={`${timerState.current.value.backgroundColor} min-h-screen font-sans text-white flex flex-col gap-4 items-center pt-24 transition-colors duration-200 ease-in-out`}>
-      <h1 className="font-semibold text-3xl mb-8">Pomodoro Timer</h1>
+      <Alert />
       <PomodoroStatus />
       <Timer />
       <div className="flex items-center gap-6">

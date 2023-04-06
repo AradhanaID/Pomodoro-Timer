@@ -1,6 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { timerHead, TimerType } from "../data/TimerData";
 import { Node } from "../datastructures/Node";
+import { useAlert } from "../components/Alert";
 export type TimerContextType = {
   timer: number;
   isPlaying: boolean;
@@ -25,7 +26,7 @@ export const TimerContextProvider = ({
   const counter = useRef<any>(null)
   const timerState = useRef(timerHead())
   const [timer, setTimer] = useState(timerState.current.value.defaultTime);
-
+  const [isVisible, invoke] = useAlert();
   if (!timerState) {
     return null
   }
@@ -33,6 +34,7 @@ export const TimerContextProvider = ({
   useEffect(() => {
     if (timer <= 0) {
       nextState();
+      invoke();
     }
   }, [timer])
 

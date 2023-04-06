@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
-import { TimerContext } from '../context/TimerContext';
+
 import { CupHot, GraphUpArrow, Headphones } from 'react-bootstrap-icons'
+import { TimerContext } from '../../context/TimerContext';
 
 const PomodoroStatus = () => {
   const { timerState } = useContext(TimerContext)!;

@@ -1,10 +1,8 @@
 import { useContext, useMemo } from "react";
-import { TimerContext } from "../context/TimerContext";
+import { TimerContext } from "../../context/TimerContext";
 
 const Timer = () => {
-  const timerProvider = useContext(TimerContext);
-  if (!timerProvider) return null;
-  const { timer } = timerProvider;
+  const { timer } = useContext(TimerContext)!;
 
   const minutes = useMemo(() => Math.floor(timer / 60), [timer])
   const seconds = useMemo(() => timer % 60, [timer])
