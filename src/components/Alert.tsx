@@ -1,13 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { CheckCircleFill, CheckLg, Stopwatch, StopwatchFill } from 'react-bootstrap-icons'
+import { StopwatchFill } from 'react-bootstrap-icons'
 
-const Alert = () => {
-  const [isVisible, invoke] = useAlert();
-  useEffect(() => {
-    console.log(isVisible)
-  }, [isVisible])
+const Alert = ({ isVisible }: { isVisible: boolean }) => {
   return (
-    <div className={`toast transition-opacity`}>
+    <div className={`toast ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-500`}>
       <div className="alert border-l-4 border-green-400 rounded px-24">
         <div>
           <StopwatchFill color='#4ade80' />
@@ -18,18 +13,5 @@ const Alert = () => {
   )
 }
 
-export const useAlert = (): [React.MutableRefObject<boolean>, () => void] => {
-  let isVisible = useRef(false);
-
-  const invoke = () => {
-    console.log("invoke is called");
-    isVisible = true
-    setTimeout(() => {
-      console.log("setTimeout stopped");
-      isVisible = false;
-    }, 5000)
-  }
-  return [isVisible, invoke];
-}
 
 export default Alert

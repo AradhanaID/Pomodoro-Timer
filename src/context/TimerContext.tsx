@@ -1,7 +1,7 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import { timerHead, TimerType } from "../data/TimerData";
 import { Node } from "../datastructures/Node";
-import { useAlert } from "../components/Alert";
+import { useAlert } from "../hooks/useAlert";
 export type TimerContextType = {
   timer: number;
   isPlaying: boolean;
@@ -10,6 +10,7 @@ export type TimerContextType = {
   stop: () => void;
   nextState: () => void;
   timerState: React.MutableRefObject<Node<TimerType>>;
+  alertIsVisible: boolean
 };
 
 export const TimerContext = createContext<TimerContextType | null>(null);
@@ -26,7 +27,7 @@ export const TimerContextProvider = ({
   const counter = useRef<any>(null)
   const timerState = useRef(timerHead())
   const [timer, setTimer] = useState(timerState.current.value.defaultTime);
-  const [isVisible, invoke] = useAlert();
+  const [alertIsVisible, invoke] = useAlert();
   if (!timerState) {
     return null
   }
@@ -67,7 +68,7 @@ export const TimerContextProvider = ({
   }
 
   return (
-    <TimerContext.Provider value={{ timer, isPlaying, timerState, play, pause, stop, nextState, }}>
+    <TimerContext.Provider value={{ timer, isPlaying, timerState, play, pause, stop, nextState, alertIsVisible }}>
       {children}
     </TimerContext.Provider>
   );
