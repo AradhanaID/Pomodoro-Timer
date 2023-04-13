@@ -12,7 +12,7 @@ export type TimerType = {
 export const STATES = [
   {
     name: 'Focus',
-    defaultTime: 3,
+    defaultTime: 1500,
     backgroundColor: 'bg-rose-800',
     color: 'text-rose-800'
   },
